@@ -1,0 +1,21 @@
+<form [formGroup]="formularioMatricula" (ngSubmit)="onSubmit()">
+  <div>
+    <label for="Id">Alumno:</label>
+    <input type="text" formControlName="Id">
+    <div *ngIf="formularioMatricula.get('Id').errors && formularioMatricula.get('Id').touched" class="error">
+      Debe ingresar un ID de alumno.
+    </div>
+  </div>
+
+  <div>
+    <label for="Id">Cursos:</label>
+    <select formControlName="Id" id="Id" multiple>
+      <option *ngFor="let curso of cursos" [value]="curso.id">{{ curso.nombre }}</option>
+    </select>
+    <div *ngIf="formularioMatricula.get('Id').errors && formularioMatricula.get('Id').touched" class="error">
+      Debe seleccionar al menos un curso.
+    </div>
+  </div>
+
+  <button type="submit" [disabled]="formularioMatricula.invalid">Matricular</button>
+</form>

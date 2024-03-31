@@ -1,0 +1,49 @@
+<h1>Datos del Alumno!</h1>
+
+<div [hidden]="enviado"> 
+  <form (ngSubmit)="onSubmit()" #mascotaForm1="ngForm">
+    <div class="form.group">
+      <label for="id">Id</label>
+      <input type="text" class="form-control" id="id" required
+          [(ngModel)]="modelo1.id" name="id">
+      <br>
+      <label for="nombre">Nombre</label> 
+      <input type="text" class="form-control" id="nombre" required
+          [(ngModel)]="modelo1.nombre" name="nombre">
+      <br>
+      <br>
+      <label for="apellido">Apellido</label> 
+      <input type="text" class="form-control" id="apellido" required
+          [(ngModel)]="modelo1.apellido" name="apellido">
+      <br>
+      <label for="promedios">Promedios</label>
+      <select class="form-control" id="promedios" required
+          [(ngModel)]="modelo1.promedio" name="promedio">
+          <option *ngFor="let promedio of promedios" [value]="promedio">
+              {{promedio}}
+          </option>
+      </select>
+
+      <br>
+      <label for="estado">Estado</label> 
+      <input type="text" class="form-control" id="estado" required
+          [(ngModel)]="modelo1.estado" name="estado">
+      <br>
+
+  </div>
+
+
+    <button type="submit" class="btn btn-primary" 
+        [disabled]="!mascotaForm1.form.valid">Enviar</button>
+  </form>
+</div>
+
+<div [hidden]="!enviado">
+  <h2>Formulario enviado</h2>
+  <div>Id: {{modelo1.id}}</div>
+  <div>Nombre: {{modelo1.nombre}}</div>
+  <div>Apellido: {{modelo1.apellido}}</div>
+  <div>Promedio: {{modelo1.promedio}}</div>
+  <div>Estado: {{modelo1.estado}}</div>
+  <button class="btn btn-primary" (click)="enviado=false">Editar</button>
+</div>
